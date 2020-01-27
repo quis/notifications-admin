@@ -1103,6 +1103,7 @@ def api_user_active(fake_uuid):
                  'organisations': [],
                  'current_session_id': None,
                  'logged_in_at': None,
+                 'email_access_validated_at': None
                  }
     return user_data
 
@@ -1488,7 +1489,7 @@ def mock_verify_password(mocker):
 
 @pytest.fixture(scope='function')
 def mock_update_user_password(mocker, api_user_active):
-    def _update(user_id, password):
+    def _update(user_id, password, from_email=False):
         api_user_active['id'] = user_id
         return api_user_active
 
