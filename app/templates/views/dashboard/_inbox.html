@@ -1,17 +1,17 @@
 {% from "components/big-number.html" import big_number, big_number_with_status %}
 
 <div class="ajax-block">
-  {% if inbound_sms_summary != None %}
+  {% if current_service.inbound_sms_summary != None %}
     <a id="total-received" class="banner-dashboard" href="{{ url_for('.inbox', service_id=current_service.id) }}">
       <span class="banner-dashboard-count">
-        {{ inbound_sms_summary.count }}
+        {{ current_service.inbound_sms_summary.count }}
       </span>
       <span class="banner-dashboard-count-label">
         text messages received
       </span>
-      {% if inbound_sms_summary.most_recent %}
+      {% if current_service.inbound_sms_summary.most_recent %}
         <span class="banner-dashboard-meta">
-          latest message {{ inbound_sms_summary.most_recent | format_delta }}
+          latest message {{ current_service.inbound_sms_summary.most_recent | format_delta }}
         </span>
       {% endif %}
     </a>
