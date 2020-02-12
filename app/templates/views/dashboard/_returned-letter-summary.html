@@ -1,0 +1,17 @@
+{% from "components/big-number.html" import big_number %}
+
+<div class='ajax-block-container'>
+  {% if current_service.returned_letter_summary %}
+    <a id="total-received" class="banner-dashboard" href="{{ url_for('main.returned_letter_summary', service_id=current_service.id) }}">
+      <span class="banner-dashboard-count">
+        {{ current_service.count_of_returned_letters_in_last_7_days }}
+      </span>
+      <span class="banner-dashboard-count-label">
+        returned letters
+      </span>
+      <span class="banner-dashboard-meta">
+        latest report {{ current_service.most_recent_returned_letter_report|format_delta }}
+      </span>
+    </a>
+  {% endif %}
+</div>
